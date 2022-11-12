@@ -1,0 +1,27 @@
+{
+    "name": "cleartouch-ippctrl",
+    "version": "1.0.0",
+    "api_version": "1.0.0",
+    "keywords": [
+      "Software"
+    ],
+    "manufacturer": "Clear Touch",
+    "product": "IP Panel Control (Telnet)",
+    "shortname": "IPPCTRL",
+    "description": "Module to control Clear Touch IP Panels via Telnet",
+    "homepage": "getcleartouch.com",
+    "bugs": {
+      "url": "example.com"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+github.com"
+    },
+    "main": "index.js",
+    "author": "TheGreydiamond <software@thegreydiamond.de>",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "license": "LGPL-3.0"
+  }
+  
