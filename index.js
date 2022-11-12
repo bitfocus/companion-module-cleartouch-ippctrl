@@ -19,11 +19,9 @@ class instance extends instance_skel {
 		const tThis = this
 
 		// this.actions() // export actions
-		// this.variables()
 		// this.initPresets()
 		this.status(this.STATUS_WARNING, 'Connecting')
 		this.isReady = false
-		this.vardefs = []
         this.createConnection()
 	}
 
@@ -45,31 +43,6 @@ class instance extends instance_skel {
 
 	checkConnection() {
 		 ;
-	}
-
-	updateVariables() {
-		;
-	}
-
-	variables() {
-		const tThis = this
-		try {
-			const variables = []
-
-			variables.push({
-				name: 'amount_sounds_currently_playing',
-				label: 'Songs currently playing',
-			})
-			this.setVariableDefinitions(variables)
-			variables.forEach(function handleList(item) {
-				tThis.setVariable(item.name, '0')
-			})
-			this.vardefs = variables
-			// this.setVariable('amount_sounds_currently_playing', '0')
-		} catch (error) {
-			console.error(error)
-		}
-
 	}
 
 	async actions() {
@@ -110,6 +83,62 @@ class instance extends instance_skel {
 							min: 0,
 							max: 100,
                             tooltip: 'The brightness of the backlight',
+                        }
+                    ]
+			},
+			treble: {
+				label: 'Treble control',
+                options: [
+                        {
+                            type: 'number',
+                            label: 'Treble',
+                            id: 'treble',
+                            required: true,
+							min: 0,
+							max: 100,
+                            tooltip: 'The treble of the sound',
+                        }
+                    ]
+			},
+			bass: {
+				label: 'Bass control',
+                options: [
+                        {
+                            type: 'number',
+                            label: 'Bass',
+                            id: 'bass',
+                            required: true,
+							min: 0,
+							max: 100,
+                            tooltip: 'The bass of the sound',
+                        }
+                    ]
+			},
+			treble: {
+				label: 'Balance control',
+                options: [
+                        {
+                            type: 'number',
+                            label: 'Balance',
+                            id: 'balance',
+                            required: true,
+							min: 0,
+							max: 100,
+                            tooltip: 'The balance of the sound',
+                        }
+                    ]
+			},
+			treble: {
+				label: 'Contrast control',
+                options: [
+                        {
+                            type: 'number',
+                            label: 'Contrast',
+                            id: 'contrast',
+                            required: true,
+							min: 0,
+							max: 100,
+                            tooltip: 'Image contrast',
                         }
                     ]
 			},
@@ -183,6 +212,18 @@ class instance extends instance_skel {
                 return
             } else if(action.action == 'brightness') {
 				this.conn.write(":01S5" + String(action.options.bright).padStart(3, '0')) // make sure that the value is 3 digits long
+				return
+			} else if(action.action == 'treble') {
+				this.conn.write(":01S1" + String(action.options.bright).padStart(3, '0')) // make sure that the value is 3 digits long
+				return
+			} else if(action.action == 'bass') {
+				this.conn.write(":01S2" + String(action.options.bright).padStart(3, '0')) // make sure that the value is 3 digits long
+				return
+			} else if(action.action == 'balance') {
+				this.conn.write(":01S3" + String(action.options.bright).padStart(3, '0')) // make sure that the value is 3 digits long
+				return
+			} else if(action.action == 'contrast') {
+				this.conn.write(":01S4" + String(action.options.bright).padStart(3, '0')) // make sure that the value is 3 digits long
 				return
 			}
 		}
