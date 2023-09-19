@@ -16,8 +16,6 @@ class instance extends instance_skel {
 	}
 
 	init() {
-		const tThis = this
-
 		this.actions() // export actions
 		// this.initPresets()
 		this.status(this.STATUS_WARNING, 'Connecting')
@@ -207,9 +205,7 @@ class instance extends instance_skel {
 	}
 
 	updateConfig(config) {
-		tThis = this
 		this.config = config
-		const tThis = this
 		this.isReady = false
 		this.status(this.STATUS_WARNING, 'Connecting')
 		this.conn.destroy()
